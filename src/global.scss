@@ -11,13 +11,13 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .nav-icons{
-    background-color: #e8e8e8;
+    background-color: whitesmoke;
     border: 1px solid #dcdcdc;
     border-radius: 50%;
-    font-size: 30px;
     font-weight: 100;
     position: absolute;
     bottom: 30px;
     right: 30px;
-    padding: 17px 18px 13px 18px;
+    padding: 15px 16px 11px 16px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 }
