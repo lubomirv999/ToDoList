@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Task</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <a routerLink="/" class="nav-icons">
+    <i class="material-icons">arrow_back</i>
+  </a>
+
+  <form #f="ngForm" (ngSubmit)="add()">
+    <div class="add-task-form-input">
+      <label class="add-labels" for="title">Title</label>
+      <input class="add-inputs" required type="text" name="title" id="title" [(ngModel)]="bindingModel.title" minlength="2" maxlength="50" />
+    </div>
+
+    <div class="add-task-form-input">
+      <label class="add-labels" for="content">Content</label>
+      <input class="add-inputs" required type="text" name="content" id="content" [(ngModel)]="bindingModel.content" minlength="2"
+        maxlength="150" />
+    </div>
+
+    <div class="add-task-form-input">
+        <button class="add-btn" type="submit" [disabled]="f.invalid">Add</button>
+    </div>    
+  </form>
+</ion-content>
