@@ -22,7 +22,7 @@ export class CreateTaskPage implements OnInit {
     if (this.tasksService.addTask(this.bindingModel)) {
       this.router.navigateByUrl("/");
     } else {
-      this.router.navigateByUrl("/");
+      this.router.navigateByUrl("/create-task");
     }
   }
 }
