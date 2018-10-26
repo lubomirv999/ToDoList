@@ -7,6 +7,14 @@
 </ion-header>
 
 <ion-content padding>
+  <div class="div-details" *ngFor="let task of tasks | async">
+    <a class="details-link" routerLink="/details-task/{{task.id}}">
+      <div class="task-home-title">
+        {{task.title}}
+      </div>
+    </a>
+  </div>
+
   <a routerLink="/create-task" class="nav-icons">
     <i class="material-icons">add</i>
   </a>

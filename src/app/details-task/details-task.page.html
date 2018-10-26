@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{task?.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>  
+  <h3 class="task-content-heading">Content:</h3>
+  <p class="task-content">{{task.content}}</p>
+
+  <a routerLink="/" class="nav-icons">
+    <i class="material-icons">arrow_back</i>
+  </a>
+
+  <a routerLink="/edit-task/{{id}}" class="edit-icon">
+    <i class="material-icons">create</i>
+  </a>
+
+  <a (click)="delete(id)" class="delete-icon">
+    <i class="material-icons">remove_circle_outline</i>
+  </a>
+</ion-content>

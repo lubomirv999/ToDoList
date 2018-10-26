@@ -1,0 +1,34 @@
+.task-content-heading{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.task-content{
+    font-size: 14px;
+}
+
+.edit-icon{
+    background-color: #f5c731;
+    border: 1px solid #c79a04;
+    border-radius: 50%;
+    font-weight: 100;
+    color: whitesmoke;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    padding: 15px 16px 11px 16px;
+    box-shadow: 0 3px 5px -1px #c79a04  , 0 6px 10px 0 rgba(0,0,0,.12), 0 1px 18px 0 #c79a04  ;
+}
+
+.delete-icon{
+    background-color: #e7405c;
+    border: 1px solid #fe3355;
+    border-radius: 50%;
+    font-weight: 100;
+    color: whitesmoke;
+    position: absolute;
+    bottom: 15px;
+    left: 80px;
+    padding: 15px 16px 11px 16px;
+    box-shadow: 0 3px 5px -1px #fe3355, 0 6px 10px 0 rgba(0,0,0,.12), 0 1px 18px 0 #fe3355;
+}

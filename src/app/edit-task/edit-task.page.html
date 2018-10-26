@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>  
+  <form #f="ngForm" (ngSubmit)="f.form.valid && edit()">
+    <div class="edit-task-form-input">
+      <label class="edit-labels" for="title">Title</label>
+      <input class="edit-inputs" required type="text" name="title" id="title" [(ngModel)]="bindingModel.title" value="{{bindingModel.title}}"
+        minlength="2" maxlength="50" />
+    </div>
+
+    <div class="edit-task-form-input">
+      <label class="edit-labels" for="content">Content</label>
+      <input class="edit-inputs" required type="text" name="content" id="content" [(ngModel)]="bindingModel.content"
+        value="{{bindingModel.content}}" minlength="2" maxlength="150" />
+    </div>
+
+    <div class="edit-task-form-input">
+      <button class="edit-btn" type="submit" [disabled]="f.invalid">Edit</button>
+    </div>
+  </form>
+
+  <a routerLink="/" class="nav-icons">
+    <i class="material-icons">arrow_back</i>
+  </a>
+</ion-content>
