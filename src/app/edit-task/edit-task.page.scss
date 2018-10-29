@@ -12,12 +12,17 @@
 }
 
 .edit-inputs{
+    border-radius: 5px;
+    border: 1px solid lightblue;
     float: right;
     width: 70%;
 }
 
 .edit-btn{
-    font-size: 14px;
-    padding: 7px 17px;
+    background: none;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px 25px;
     float: right;
 }
