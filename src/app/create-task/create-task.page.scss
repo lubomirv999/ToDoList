@@ -1,12 +1,14 @@
 .add-task-form-input{
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     padding-bottom: 40px;
 }
 
 .add-labels{
     float: left;
     width: 30%;
+    text-align: right;
+    padding: 3px 5px 0 0;
 }
 
 .add-inputs{
@@ -17,4 +19,5 @@
 .add-btn{
     font-size: 14px;
     padding: 7px 17px;
+    float: right;
 }

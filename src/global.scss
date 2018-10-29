@@ -10,6 +10,14 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@import "assets/fonts/league-gothic.scss";
+
+.title-md{
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
 .nav-icons{
     background-color: whitesmoke;
     border: 1px solid #dcdcdc;
