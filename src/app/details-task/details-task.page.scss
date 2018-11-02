@@ -1,3 +1,22 @@
+#toolbar-details{
+    padding-top: 5px; 
+}
+
+.toolbar-title{
+    float: left;
+    padding-top: 5px;
+}
+
+.toolbar-icons{
+    font-size: 30px;
+    float: right;
+    padding-right: 10px;
+}
+
+.toolbar-icons ion-icon:first-of-type{
+    padding-right: 5px;
+}
+
 .task-content-heading{
     font-size: 18px;
     font-weight: bold;
@@ -5,30 +24,4 @@
 
 .task-content{
     font-size: 14px;
-}
-
-.edit-icon{
-    background-color: #f5c731;
-    border: 1px solid #c79a04;
-    border-radius: 50%;
-    font-weight: 100;
-    color: whitesmoke;
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    padding: 15px 16px 11px 16px;
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
-}
-
-.delete-icon{
-    background-color: #e7405c;
-    border: 1px solid #fe3355;
-    border-radius: 50%;
-    font-weight: 100;
-    color: whitesmoke;
-    position: absolute;
-    bottom: 15px;
-    left: 90px;
-    padding: 15px 16px 11px 16px;
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 }

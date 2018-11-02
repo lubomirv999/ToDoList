@@ -6,28 +6,24 @@
 
 <ion-content padding>
   <form #f="ngForm" (ngSubmit)="f.form.valid && edit()">
-    <div class="edit-task-form-input">
-      <div class="edit-labels">
-        <label for="title">Title:</label>
-      </div>
-      <input class="edit-inputs" required type="text" name="title" id="title" [(ngModel)]="bindingModel.title" value="{{bindingModel.title}}"
-        minlength="2" maxlength="50" />
-    </div>
+    <ion-item>
+      <ion-label color="{{ f.controls.title?.invalid && f.controls.title.dirty ? 'danger' : 'dark' }}">Title:</ion-label>
+      <ion-input clearInput required type="text" name="title" id="title" [(ngModel)]="bindingModel.title" minlength="2"
+        maxlength="50"></ion-input>
+    </ion-item>
+    <ion-label text-wrap *ngIf="f.controls.title?.invalid && f.controls.title.dirty">Title must be between 2
+      and 50 symbols!</ion-label>
 
-    <div class="edit-task-form-input">
-      <div class="edit-labels">
-        <label for="content">Content:</label>
-      </div>
-      <input class="edit-inputs" required type="text" name="content" id="content" [(ngModel)]="bindingModel.content"
-        value="{{bindingModel.content}}" minlength="2" maxlength="150" />
-    </div>
+    <ion-item>
+      <ion-label color="{{ f.controls.content?.invalid && f.controls.content.dirty ? 'danger' : 'dark' }}">Content:</ion-label>
+      <ion-input clearInput required type="text" name="content" id="content" [(ngModel)]="bindingModel.content"
+        minlength="2" maxlength="50"></ion-input>
+    </ion-item>
+    <ion-label text-wrap *ngIf="f.controls.content?.invalid && f.controls.content.dirty">Content must be between 2 and
+      150 symbols!</ion-label>
 
-    <div class="edit-task-form-input">
-      <button class="edit-btn" type="submit" [disabled]="f.invalid">Edit</button>
+    <div class="form-submit-btn">
+      <ion-button form-submit-btn color="primary" type="submit" [disabled]="f.invalid">Add</ion-button>
     </div>
   </form>
-
-  <a routerLink="/details-task/{{id}}" class="nav-icons">
-    <i class="material-icons">arrow_back</i>
-  </a>
 </ion-content>

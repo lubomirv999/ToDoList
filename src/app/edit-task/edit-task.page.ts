@@ -15,6 +15,7 @@ export class EditTaskPage implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private tasksService: TasksService) { }
 
   ngOnInit() {
+    this.bindingModel = new AddTask('', '');
     this.id = this.route.snapshot.params['id'];
     this.tasksService.getById(this.id)
       .subscribe((data) => {

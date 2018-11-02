@@ -6,28 +6,24 @@
 
 <ion-content padding>
   <form #f="ngForm" (ngSubmit)="f.form.valid && add()">
-    <div class="add-task-form-input">
-      <div class="add-labels">
-        <label for="title">Title:</label>
-      </div>
-      <input class="add-inputs" required type="text" name="title" id="title" [(ngModel)]="bindingModel.title" minlength="2"
-        maxlength="50" />
-    </div>
+    <ion-item>
+      <ion-label color="{{ f.controls.title?.invalid && f.controls.title.dirty ? 'danger' : 'dark' }}">Title:</ion-label>
+      <ion-input clearInput required type="text" name="title" id="title" [(ngModel)]="bindingModel.title" minlength="2"
+        maxlength="50"></ion-input>
+    </ion-item>
+    <ion-label text-wrap *ngIf="f.controls.title?.invalid && f.controls.title.dirty">Title must be between 2
+      and 50 symbols!</ion-label>
 
-    <div class="add-task-form-input">
-      <div class="add-labels">
-        <label for="content">Content:</label>
-      </div>
-      <input class="add-inputs" required type="text" name="content" id="content" [(ngModel)]="bindingModel.content"
-        minlength="2" maxlength="150" />
-    </div>
+    <ion-item>
+      <ion-label color="{{ f.controls.content?.invalid && f.controls.content.dirty ? 'danger' : 'dark' }}">Content:</ion-label>
+      <ion-input clearInput required type="text" name="content" id="content" [(ngModel)]="bindingModel.content"
+        minlength="2" maxlength="50"></ion-input>
+    </ion-item>
+    <ion-label text-wrap *ngIf="f.controls.content?.invalid && f.controls.content.dirty">Content must be between 2 and
+      150 symbols!</ion-label>
 
-    <div class="add-task-form-input">
-      <button class="add-btn" type="submit" [disabled]="f.invalid">Add</button>
+    <div class="form-submit-btn">
+        <ion-button color="primary" type="submit" [disabled]="f.invalid">Add</ion-button>
     </div>
   </form>
-
-  <a routerLink="/" class="nav-icons">
-    <i class="material-icons">arrow_back</i>
-  </a>
 </ion-content>

@@ -1,24 +1,7 @@
-.task-home-title{    
+.task-home-title {    
     font-family: 'League Gothic Regular';
-    font-size: 20px;    
+    font-size: 20px;
     font-kerning: 2px;
-    color: var(--ion-color-dark-tint);
-    padding: 5px 0 5px 5px;
-    margin: 9px;
-}
-
-.details-link{
     text-decoration: none;
-}
-
-.div-details{
-    border-radius: 5px;
-}
-
-.div-details:nth-of-type(odd){
-    background-color: rgb(225, 230, 231);
-}
-
-.div-details:nth-of-type(even){
-    background-color: whitesmoke;
+    color: var(--ion-color-dark-tint);
 }

@@ -18,7 +18,7 @@ export class HomePage implements OnInit {
       if (e instanceof NavigationEnd) {
         this.initialData();
       }
-    });
+    });    
   }
 
   initialData() {

@@ -12,17 +12,14 @@ export class CreateTaskPage implements OnInit {
   bindingModel: AddTask;
 
   constructor(private router: Router, private tasksService: TasksService, private zone: NgZone) {
-    this.bindingModel = new AddTask("", "");
+    this.bindingModel = new AddTask('', '');
   }
 
   ngOnInit() {
   }
 
   add() {
-    let title = this.bindingModel.title;
-    let content = this.bindingModel.content;
-
-    if (title.length <= 2 || title.length > 50 || content.length <= 2 || content.length > 150) {
+    if (this.bindingModel.title.length <= 2 || this.bindingModel.title.length > 50 || this.bindingModel.content.length <= 2 || this.bindingModel.content.length > 150) {
       this.router.navigateByUrl('/create-task');
     }
 

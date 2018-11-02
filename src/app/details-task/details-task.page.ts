@@ -19,30 +19,36 @@ export class DetailsTaskPage implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.taskService.getDetailsTask(this.id)
       .subscribe(data => {
+        if (data == null) {
+          this.router.navigateByUrl('/');
+        }
+
         this.task = data;
       })
   }
 
   delete(id: string) {
-    let alert = this.alertController.create({
-      header: 'Delete Task?',
-      message: 'Are you sure you want to delete the task?',
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: () => {
+    if (this.task != null) {
+      let alert = this.alertController.create({
+        header: 'Delete Task?',
+        message: 'Are you sure you want to delete the task?',
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: () => {
+            }
+          },
+          {
+            text: 'Delete',
+            handler: () => {
+              this.taskService.deleteCar(id)
+                .subscribe((data) => {
+                  this.router.navigateByUrl('/');
+                })
+            }
           }
-        },
-        {
-          text: 'Delete',
-          handler: () => {
-            this.taskService.deleteCar(id)
-              .subscribe((data) => {
-                this.router.navigateByUrl('/');
-              })
-          }
-        }
-      ]
-    }).then(a => a.present());
+        ]
+      }).then(a => a.present());
+    }
   }
 }

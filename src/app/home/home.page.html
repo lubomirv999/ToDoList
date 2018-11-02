@@ -6,16 +6,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <div class="div-details" *ngFor="let task of tasks | async">
-    <a class="details-link" routerLink="/details-task/{{task.id}}">
-      <div class="task-home-title">
-        {{task.title}}
-      </div>
-    </a>
-  </div>
+<ion-content>
+  <ion-list>
+    <ion-item class="task-home-title" routerLink="/details-task/{{task.id}}" *ngFor="let task of tasks | async">
+      {{task.title}}
+    </ion-item>
+  </ion-list>
 
-  <a routerLink="/create-task" class="nav-icons">
-    <i class="material-icons">add</i>
-  </a>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/create-task">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
