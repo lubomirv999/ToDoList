@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'create-task', loadChildren: './create-task/create-task.module#CreateTaskPageModule' },
   { path: 'details-task/:id', loadChildren: './details-task/details-task.module#DetailsTaskPageModule' },
   { path: 'edit-task/:id', loadChildren: './edit-task/edit-task.module#EditTaskPageModule' },
-  { path: '**', redirectTo: 'home'}
+  { path: '**', redirectTo: 'home' }
+
 ];
 
 @NgModule({

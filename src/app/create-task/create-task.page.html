@@ -1,5 +1,9 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="buttonText" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
     <ion-title>Add Task</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -23,7 +27,7 @@
       150 symbols!</ion-label>
 
     <div class="form-submit-btn">
-        <ion-button color="primary" type="submit" [disabled]="f.invalid">Add</ion-button>
+      <ion-button color="primary" type="submit" [disabled]="f.invalid">Add</ion-button>
     </div>
   </form>
 </ion-content>

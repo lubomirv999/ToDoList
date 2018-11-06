@@ -1,18 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <div id="toolbar-details">
-      <div class="toolbar-title">
-        <ion-title>{{task?.title}}</ion-title>
-      </div>
-      <div class="toolbar-icons">
-        <ion-icon routerLink="/edit-task/{{id}}" name="create"></ion-icon>
-        <ion-icon (click)="delete(id)" name="close-circle"></ion-icon>
-      </div>
-    </div>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="buttonText" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!task"></ion-title>
+    <ion-title *ngIf="task">{{task?.title}}</ion-title>
+
+    <ion-buttons class="more-icon" end>
+      <ion-fab horizontal="end" (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </ion-fab>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h3 class="task-content-heading">Content:</h3>
-  <p class="task-content">{{task?.content}}</p>
+  <h3 *ngIf="!task">The task cannot be loaded or has been deleted!</h3>
+  <h3 *ngIf="task" class="task-content-heading">Content:</h3>
+  <p *ngIf="task" class="task-content">{{task?.content}}</p>
 </ion-content>

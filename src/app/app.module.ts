@@ -12,6 +12,7 @@ import { FIREBASE_CREDENTIALS } from './firebase.credentials';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PopoverPageModule } from './popover/popover.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
+    PopoverPageModule,
     HttpClientModule
   ],
   providers: [

@@ -8,13 +8,16 @@
 
 <ion-content>
   <ion-list>
-    <ion-item class="task-home-title" routerLink="/details-task/{{task.id}}" *ngFor="let task of tasks | async">
+    <ion-item class="task-home-title" *ngIf="tasks?.length == 0">
+      There are no tasks in your list!
+    </ion-item>
+    <ion-item class="task-home-title" routerLink="/details-task/{{task.id}}" *ngFor="let task of tasks">
       {{task.title}}
     </ion-item>
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/create-task">
+    <ion-fab-button color="primary" routerLink="/create-task">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

@@ -22,11 +22,11 @@ export class TasksService {
             .pipe(map((res: Response) => {
                 const tasks: TasksList[] = [];
 
-                if (res !== null) {
-                    const ids = Object.keys(res);
+                if (res) {
+                    const tasksIds = Object.keys(res);
 
-                    for (const i of ids) {
-                        tasks.push(new TasksList(i, res[i].title, res[i].content));
+                    for (const id of tasksIds) {
+                        tasks.push(new TasksList(id, res[id].title, res[id].content));
                     }
 
                     return tasks;
@@ -44,11 +44,11 @@ export class TasksService {
         return this.http.post(`${baseUrl}.json`, body);
     }
 
-    editCar(body) {
+    editTask(body) {
         return this.http.patch(`${baseUrl}.json`, body);
     }
 
-    deleteCar(id: string) {
+    deleteTask(id: string) {
         return this.http.delete(`${baseUrl}/${id}/.json`);
     }
 }
