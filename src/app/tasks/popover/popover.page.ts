@@ -9,12 +9,13 @@ import { NavParams } from '@ionic/angular';
 export class PopoverPage implements OnInit {
   id: string;
   delete;
+  share;
 
-  constructor(private navParams: NavParams) {
-  }
+  constructor(private navParams: NavParams) { }
 
   ngOnInit() {
     this.id = this.navParams.get('id');
     this.delete = this.navParams.get('delete');
+    this.share = this.navParams.get('share');
   }
 }

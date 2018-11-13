@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="buttonText" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="f.form.valid && login()">
+    <ion-item>
+      <ion-label color="{{ f.controls.email?.invalid && f.controls.email.dirty ? 'danger' : 'dark' }}">E-mail:</ion-label>
+      <ion-input clearInput required type="email" name="email" id="email" [(ngModel)]="bindingModel.email" minlength="2"
+        maxlength="50" pattern="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"></ion-input>
+    </ion-item>
+    <ion-label text-wrap *ngIf="f.controls.email?.invalid && f.controls.email.dirty">E-mail must be in valid format!</ion-label>
+
+    <ion-item>
+      <ion-label color="{{ f.controls.password?.invalid && f.controls.password.dirty ? 'danger' : 'dark' }}">Password:</ion-label>
+      <ion-input clearInput required type="password" name="password" id="password" [(ngModel)]="bindingModel.password"
+        minlength="6" maxlength="50"></ion-input>
+    </ion-item>
+    <ion-label text-wrap *ngIf="f.controls.password?.invalid && f.controls.password.dirty">Password must be between 6
+      and 50 symbols!</ion-label>
+
+    <div class="form-submit-btn">
+      <ion-button color="primary" type="submit" [disabled]="f.invalid">Login</ion-button>
+    </div>
+  </form>
+</ion-content>

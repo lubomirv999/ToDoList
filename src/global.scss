@@ -19,5 +19,41 @@
 }
 
 .form-submit-btn {
+    text-align: right;
     float: right;
+    width: 100%;    
+}
+
+.task-home-title {    
+    font-family: 'League Gothic Regular';
+    font-size: 20px;
+    font-kerning: 2px;
+    text-decoration: none;
+    color: var(--ion-color-dark-tint);
+}
+
+.success-toast {
+    --background: var(--ion-color-success-shade);
+}
+
+.more-icon {
+    font-size: 30px;
+}
+
+.more-icon ion-icon {
+    margin-bottom: 15px;
+}
+
+.content-label {
+    float: left;
+    margin-right: 0;
+}
+
+.input-content {
+    float: right;
+    width: 80%;
+}
+
+.content-error {
+    width: 100%;
 }

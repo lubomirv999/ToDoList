@@ -1,7 +1,23 @@
-.task-home-title {    
+.home-page {
+    text-align: center;
+}
+
+.home-content {
+    position: relative;
+    top: 30%;
+}
+
+.home-content h1 {
     font-family: 'League Gothic Regular';
-    font-size: 20px;
-    font-kerning: 2px;
-    text-decoration: none;
-    color: var(--ion-color-dark-tint);
+    font-size: 33px;
+    color: var(--ion-color-primary);
+    padding-bottom: 15px; 
+}
+
+.user-btns {
+    font-size: 18px;
+}
+
+.user-btns:first-of-type {
+    padding-right: 15px;
 }

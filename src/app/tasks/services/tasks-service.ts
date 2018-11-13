@@ -1,8 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { Observable, of } from "rxjs";
+
 import { AddTask } from "../models/add-task-model";
 import { TasksList } from "../models/task-list.model";
+import { AuthService } from "../../auth/auth-service";
+
+import * as firebase from 'firebase/app';
+import 'firebase/database';
 
 const baseUrl = 'https://todolist-42b37.firebaseio.com/tasks';
 
@@ -11,29 +16,19 @@ const baseUrl = 'https://todolist-42b37.firebaseio.com/tasks';
 })
 
 export class TasksService {
-    constructor(private http: HttpClient) { }
+    constructor(private authService: AuthService, private http: HttpClient) { }
 
     getById(id: string) {
         return this.http.get<TasksList>(`${baseUrl}/${id}.json`);
     }
 
-    getAllTasks() {
-        return this.http.get(`${baseUrl}.json`)
-            .pipe(map((res: Response) => {
-                const tasks: TasksList[] = [];
+    getAllTasks(): Observable<TasksList[]> {
+        const tasks: TasksList[] = [];
+        firebase.database().ref("tasks").orderByChild("ownerId").equalTo(this.authService.getOwnerId()).limitToLast(30).on("child_added", function (snapshot) {
+            tasks.push(new TasksList(snapshot.ref.key, snapshot.child('title').val(), snapshot.child('content').val(), snapshot.child('ownerId').val()));
+        });
 
-                if (res) {
-                    const tasksIds = Object.keys(res);
-
-                    for (const id of tasksIds) {
-                        tasks.push(new TasksList(id, res[id].title, res[id].content));
-                    }
-
-                    return tasks;
-                } else {
-                    return tasks;
-                }
-            }));
+        return of(tasks);
     }
 
     getDetailsTask(id: string) {

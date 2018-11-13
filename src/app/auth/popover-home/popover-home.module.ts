@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-import { DetailsTaskPage } from './details-task.page';
+
+import { PopoverHomePage } from './popover-home.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: DetailsTaskPage
+    component: PopoverHomePage
   }
 ];
 
@@ -20,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DetailsTaskPage]
+  declarations: [PopoverHomePage]
 })
-export class DetailsTaskPageModule { }
+export class PopoverHomePageModule {}
