@@ -14,7 +14,6 @@ import { TasksService } from '../../tasks/services/tasks-service';
   styleUrls: ['./auth-home.page.scss'],
 })
 export class AuthHomePage {
-  ownerId: string = this.authService.getOwnerId();
   tasks: TasksList[];
   navigationSubscription;
 
@@ -31,15 +30,17 @@ export class AuthHomePage {
   initialData() {
     this.presentHomeLoader().then(p => p.present().then(
       () =>
-        this.tasksService.getAllTasks().subscribe((res) => {
-          this.popoverController.getTop().then(p => {
-            if (p) {
-              p.dismiss();
-            }
-          });
+        this.authService.getOwnerId().then((uid) => {
+          this.tasksService.getAllTasks(uid).subscribe((res) => {
+            this.popoverController.getTop().then(p => {
+              if (p) {
+                p.dismiss();
+              }
+            });
 
-          this.tasks = res;
-          this.loadingController.getTop().then(l => l.dismiss());
+            this.tasks = res;
+            this.loadingController.getTop().then(l => l.dismiss());
+          })
         }),
       (err) => {
         this.alertController.create({
@@ -66,6 +67,7 @@ export class AuthHomePage {
   async presentHomePopover(ev: any) {
     const popover = await this.popoverController.create({
       component: PopoverHomePage,
+      componentProps: { logout: () => this.authService.logout() },
       event: ev,
       translucent: true
     });

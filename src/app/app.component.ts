@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -18,14 +19,15 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
     this.initializeApp();
 
     this.platform.backButton.subscribe(() => {
-      if (this.routerOutlet && this.routerOutlet.canGoBack() && this.router.url !== '' && this.router.url !== '/auth-home') {
+      if (this.routerOutlet && this.routerOutlet.canGoBack() && this.router.url !== '/auth-home' && this.router.url !== '/home') {
         this.routerOutlet.pop();
-      } else if (this.router.url === '' || this.router.url === '/auth-home') {
+      } else if (this.router.url === '/auth-home' || this.router.url === '/home') {
         navigator['app'].exitApp();
       }
     });
@@ -36,6 +38,9 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    this.location.replaceState('auth-home');
+    this.location.go('auth-home');
 
     firebase.initializeApp({
       apiKey: "AIzaSyCmlTy-0YBU0JS-4IKfK3IAZVRoGrGv10Q",

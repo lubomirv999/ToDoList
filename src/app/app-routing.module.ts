@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 
-const routes: Routes = [
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+const routes: Routes = [  
+  { path: 'auth-home', loadChildren: './auth/auth-home/auth-home.module#AuthHomePageModule', canActivate: [AuthGuard] },
+  { path: 'home', loadChildren: './home/home.module#HomePageModule' },    
   { path: 'register', loadChildren: './users/register/register.module#RegisterPageModule' },
   { path: 'login', loadChildren: './users/login/login.module#LoginPageModule' },
-  { path: 'auth-home', loadChildren: './auth/auth-home/auth-home.module#AuthHomePageModule', canActivate: [AuthGuard] },
   { path: 'create-task', loadChildren: './tasks/create-task/create-task.module#CreateTaskPageModule', canActivate: [AuthGuard] },
   { path: 'details-task/:id', loadChildren: './tasks/details-task/details-task.module#DetailsTaskPageModule', canActivate: [AuthGuard] },
   { path: 'edit-task/:id', loadChildren: './tasks/edit-task/edit-task.module#EditTaskPageModule', canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'home' }
+  { path: '**', redirectTo: 'auth-home' }
 ];
 
 @NgModule({

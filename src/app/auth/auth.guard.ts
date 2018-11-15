@@ -17,12 +17,19 @@ export class AuthGuard implements CanActivate {
     return this.check();
   }
 
-  check() {
-    if (this.authService.isAuthenticated()) {
-      return true;
-    }
+  async check() {
+    let isLogged: boolean = false;
+    await this.authService.isAuthenticated().then((tokenExists) => {
+      isLogged = tokenExists;
+    });
 
-    this.location.back();
-    return false;
+    if (isLogged) {
+      return true;
+    } else {
+      this.location.replaceState('home');
+      this.location.go('home');
+      this.location.back();
+      return false;
+    }
   }
 }

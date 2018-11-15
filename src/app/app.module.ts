@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { AngularFireModule } from '@angular/fire';
 import { FIREBASE_CREDENTIALS } from './firebase.credentials';
@@ -21,6 +22,7 @@ import { PopoverHomePageModule } from './auth/popover-home/popover-home.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
     PopoverPageModule,

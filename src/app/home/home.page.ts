@@ -13,7 +13,7 @@ export class HomePage {
   constructor(private popoverController: PopoverController, private router: Router) {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
-        if (e.url === '/logout') {
+        if (e.url === '/home') {
           this.popoverController.getTop().then(p => {
             if (p) {
               p.dismiss();

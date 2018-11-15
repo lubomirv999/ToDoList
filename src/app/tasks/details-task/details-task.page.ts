@@ -139,8 +139,7 @@ export class DetailsTaskPage {
       component: PopoverPage,
       componentProps: { id: this.id, delete: (id) => this.delete(id), share: () => this.share() },
       event: ev,
-      translucent: true,
-
+      translucent: true
     });
 
     return await popover.present();

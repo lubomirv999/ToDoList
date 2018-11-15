@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Location } from "@angular/common";
 import { AlertController, ToastController } from "@ionic/angular";
+import { Storage } from '@ionic/storage';
 
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
@@ -10,9 +11,7 @@ import 'firebase/auth';
 })
 
 export class AuthService {
-    token: string;
-
-    constructor(private alertController: AlertController, private location: Location, private toastController: ToastController) { }
+    constructor(private alertController: AlertController, private location: Location, private storage: Storage, private toastController: ToastController) { }
 
     register(email: string, password: string) {
         firebase.auth()
@@ -43,14 +42,14 @@ export class AuthService {
                     .currentUser
                     .getIdToken()
                     .then((token: string) => {
-                        this.token = token;
+                        this.presentLoginToast();
+                        this.storage.set('auth-token', token);
+                        this.storage.set('uid', firebase.auth().currentUser.uid).then(() => {
+                            this.location.replaceState('auth-home');
+                            this.location.go('auth-home');
+                            this.location.back();
+                        });
                     })
-
-                this.presentLoginToast();
-
-                this.location.replaceState('/auth-home');
-                this.location.go('/auth-home');
-                this.location.back();
             })
             .catch((err) => {
                 this.alertController.create({
@@ -70,10 +69,13 @@ export class AuthService {
     logout() {
         firebase.auth().signOut()
             .then(() => {
-                this.token = null;
-                this.location.replaceState('/home');
-                this.location.go('/home');
-                this.location.back()
+                this.storage.remove('auth-token').then(() => {
+                    this.storage.remove('uid').then(() => {
+                        this.location.replaceState('home');
+                        this.location.go('home');
+                        this.location.back();
+                    })
+                });
             })
             .catch((err) => {
                 this.alertController.create({
@@ -90,41 +92,12 @@ export class AuthService {
             });
     }
 
-    getToken() {
-        if (firebase.auth().currentUser) {
-            firebase.auth()
-                .currentUser
-                .getIdToken()
-                .then((token: string) => {
-                    this.token = token;
-                })
-                .catch((err) => {
-                    this.alertController.create({
-                        header: 'Error!',
-                        message: `${JSON.stringify(err.message)}`,
-                        buttons: [
-                            {
-                                text: 'Dismiss',
-                                handler: () => {
-                                }
-                            }
-                        ]
-                    }).then(a => a.present());
-                })
-
-        } else {
-            this.token = '';
-        }
-
-        return this.token;
+    async isAuthenticated() {
+        return (await this.storage.get('auth-token')) as boolean;
     }
 
-    isAuthenticated() {
-        return this.token && this.token !== '';
-    }
-
-    getOwnerId() {
-        return firebase.auth().currentUser.uid;
+    async getOwnerId() {
+        return (await this.storage.get('uid')) as string;
     }
 
     async presentLoginToast() {
