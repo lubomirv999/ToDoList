@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form #f="ngForm" (ngSubmit)="f.form.valid && login()">
+  <form #f="ngForm" (keyup.enter)="f.form.valid && login()" (ngSubmit)="f.form.valid && login()">
     <ion-item>
       <ion-label color="{{ f.controls.email?.invalid && f.controls.email.dirty ? 'danger' : 'dark' }}">E-mail:</ion-label>
       <ion-input clearInput required type="email" name="email" id="email" [(ngModel)]="bindingModel.email" minlength="2"

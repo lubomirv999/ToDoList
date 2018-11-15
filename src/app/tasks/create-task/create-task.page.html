@@ -12,7 +12,7 @@
   <form #f="ngForm" (ngSubmit)="f.form.valid && add()">
     <ion-item>
       <ion-label color="{{ f.controls.title?.invalid && f.controls.title.dirty ? 'danger' : 'dark' }}">Title:</ion-label>
-      <ion-input clearInput required type="text" name="title" id="title" [(ngModel)]="bindingModel.title" minlength="2"
+      <ion-input (keyup.enter)="f.form.valid && add()" clearInput required type="text" name="title" id="title" [(ngModel)]="bindingModel.title" minlength="2"
         maxlength="50"></ion-input>
     </ion-item>
     <ion-label text-wrap *ngIf="f.controls.title?.invalid && f.controls.title.dirty">Title must be between 2
