@@ -1,22 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { IonRouterOutlet, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import * as firebase from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  @ViewChild(IonRouterOutlet) routerOutlet: IonRouterOutlet;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router: Router
   ) {
     this.initializeApp();
+
+    this.platform.backButton.subscribe(() => {
+      if (this.routerOutlet && this.routerOutlet.canGoBack() && this.router.url !== '' && this.router.url !== '/auth-home') {
+        this.routerOutlet.pop();
+      } else if (this.router.url === '' || this.router.url === '/auth-home') {
+        navigator['app'].exitApp();
+      }
+    });
   }
 
   initializeApp() {
