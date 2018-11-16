@@ -12,18 +12,20 @@
   <form #f="ngForm" (ngSubmit)="f.form.valid && add()">
     <ion-item>
       <ion-label color="{{ f.controls.title?.invalid && f.controls.title.dirty ? 'danger' : 'dark' }}">Title:</ion-label>
-      <ion-input (keyup.enter)="f.form.valid && add()" clearInput required type="text" name="title" id="title" [(ngModel)]="bindingModel.title" minlength="2"
-        maxlength="50"></ion-input>
+      <ion-input (keyup.enter)="f.form.valid && add()" clearInput required type="text" name="title" id="title"
+        [(ngModel)]="bindingModel.title" minlength="2" maxlength="50"></ion-input>
     </ion-item>
     <ion-label text-wrap *ngIf="f.controls.title?.invalid && f.controls.title.dirty">Title must be between 2
       and 50 symbols!</ion-label>
 
-    <ion-label class="content-label" color="{{ f.controls.content?.invalid && f.controls.content.dirty ? 'danger' : 'dark' }}">Content:</ion-label>
-    <ion-item class="input-content">
+
+    <ion-item no-padding class="input-content">
+      <ion-label class="content-label" color="{{ f.controls.content?.invalid && f.controls.content.dirty ? 'danger' : 'dark' }}">Content:</ion-label>
       <ion-textarea rows="4" clearInput required type="text" name="content" id="content" [(ngModel)]="bindingModel.content"
         minlength="2" maxlength="150"></ion-textarea>
     </ion-item>
-    <ion-label class="content-error" text-wrap *ngIf="f.controls.content?.invalid && f.controls.content.dirty">Content must be between 2 and
+    <ion-label class="content-error" text-wrap *ngIf="f.controls.content?.invalid && f.controls.content.dirty">Content
+      must be between 2 and
       150 symbols!</ion-label>
 
     <div class="form-submit-btn">

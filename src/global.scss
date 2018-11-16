@@ -40,18 +40,12 @@
     font-size: 30px;
 }
 
-.more-icon ion-icon {
-    margin-bottom: 15px;
+.more-icon {
+    vertical-align: middle;
 }
 
 .content-label {
-    float: left;
-    margin-right: 0;
-}
-
-.input-content {
-    float: right;
-    width: 80%;
+    padding-bottom: 15%;
 }
 
 .content-error {
